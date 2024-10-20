@@ -1,0 +1,31 @@
+#cloud-config
+autoinstall:
+  version: 1
+  storage:
+    config:
+      name: lvm
+      wipe: true
+      label: ubuntu
+  identity:
+    username: derpo
+    password: "$6$ZecL7g7aLWIP/mYU$4pg/K7azMGQWHOazdsGaw9h74ozf9b2Qnfw7VoyeIr6brbbcG9ndUsC7aRwxaiJIkQ9Eok1Z9dTorrP0z482.."
+    hostname: vmtest
+  locale: en_US.UTF-8 
+  keyboard:
+    layout: us
+  timezone: America/Phoenix
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        dhcp6: true
+  user-data:
+    disable_root: true
+    packages:
+      - vim
+      - curl
+      - open-vm-tools
+    snaps:
+      - name: code
+        channel: stable 
+        classic: true
